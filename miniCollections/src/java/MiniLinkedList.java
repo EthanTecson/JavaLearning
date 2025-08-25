@@ -6,35 +6,54 @@ public class MiniLinkedList<E> extends MiniCollection<E> {
         Node<E> next;
     }
     // Append to end
-    void add(E e){
+    public void add(E e){
         ;
     }
     // Append at specific index
-    void add(int index, E e){
+    public void add(int index, E e){
         ;
     }
     // Get element at specific index
-    E get(int index){
+    public E get(int index){
         Node<E> result = null;
         return result.data;
     }
 
-    E set(int index, E e){
+    public E set(int index, E e){
         Node<E> result = null;
         result.data = e;
         return result.data;
     }
 
-    E remove(int index){
+    public E remove(int index){
         Node<E> result = null;
         return result.data;
     }
 
-    int indexOf(Object o){
+    public int indexOf(Object o){
         return 1;
     }
 
-    boolean containts(Object o){
+    public boolean containts(Object o){
         return false;
+    }
+
+
+    // miniCollection Implementation
+    protected int size(){
+        return 0;
+    }
+
+    protected boolean isEmpty(){
+        return false;
+    }
+
+    protected void clear(){
+        return;
+    }
+
+    protected MiniIterator<E> iterator(){
+        MiniIterator<E> test;
+        return test;
     }
 }
