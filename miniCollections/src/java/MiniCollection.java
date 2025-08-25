@@ -1,6 +1,6 @@
 package miniCollections.src.java;
 
-abstract class MiniCollection implements MiniIterator<E> {
+abstract class MiniCollection<E>{
     protected abstract int size();
     protected abstract boolean isEmpty();
     protected abstract void clear();
