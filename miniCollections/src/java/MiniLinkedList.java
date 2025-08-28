@@ -22,12 +22,44 @@ public class MiniLinkedList<E> extends MiniCollection<E> {
 
     // Append at specific index
     public void add(int index, E e){
-        ;
+        Node newNode = new Node(e);
+        newNode.data = e;
+
+        if (index == 0) {
+            newNode.next = head;
+            head = newNode;
+            return;
+        }
+
+        int count = 0;
+        Node mainPtr = head;
+        Node prevPtr = null;
+        while (count != index) {
+            prevPtr = mainPtr;
+            mainPtr = mainPtr.next;
+            count++;
+        }
+        newNode.next = mainPtr;
+        prevPtr.next = newNode;
+        return;
     }
+
     // Get element at specific index
     public E get(int index){
-        Node result = null;
-        return result.data;
+        if (index < 0) {
+            System.out.println("Index must be great than zero");
+        }
+
+        if (index >= size) {
+            System.out.println("Index out of range");
+        }
+
+        int count = 0;
+        Node ptr = head;
+        while (count != index) {
+            ptr = ptr.next;
+        }
+        return ptr.data;
     }
 
     public E set(int index, E e){
