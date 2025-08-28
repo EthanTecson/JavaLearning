@@ -52,8 +52,18 @@ public class MiniLinkedList<E> extends MiniCollection<E> {
         return;
     }
 
-    protected MiniIterator<E> iterator(){
-        MiniIterator<E> test;
-        return test;
+    private class LinkedListIterator implements MiniIterator<E>{
+        public boolean hasNext() {
+            return false;
+        }
+
+        public E next() {
+            Node<E> result = null;
+            return result.data;
+        }
+    }
+
+    protected MiniIterator<E> iterator() {
+        return new LinkedListIterator();
     }
 }
