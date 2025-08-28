@@ -1,32 +1,43 @@
 package miniCollections.src.java;
 
 public class MiniLinkedList<E> extends MiniCollection<E> {
-    private class Node<E> {
+
+    private Node head;
+    private Node tail;
+    private int size;
+
+    private class Node {
         E data;
-        Node<E> next;
+        Node next;
+        Node (E data) { this.data = data; }
     }
+
     // Append to end
     public void add(E e){
-        ;
+        Node newNode = new Node(e);
+        newNode.data = e;
+        tail.next = newNode;
+        tail = newNode;
     }
+
     // Append at specific index
     public void add(int index, E e){
         ;
     }
     // Get element at specific index
     public E get(int index){
-        Node<E> result = null;
+        Node result = null;
         return result.data;
     }
 
     public E set(int index, E e){
-        Node<E> result = null;
+        Node result = null;
         result.data = e;
         return result.data;
     }
 
     public E remove(int index){
-        Node<E> result = null;
+        Node result = null;
         return result.data;
     }
 
@@ -58,7 +69,7 @@ public class MiniLinkedList<E> extends MiniCollection<E> {
         }
 
         public E next() {
-            Node<E> result = null;
+            Node result = null;
             return result.data;
         }
     }
