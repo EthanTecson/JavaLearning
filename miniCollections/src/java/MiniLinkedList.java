@@ -113,10 +113,23 @@ public class MiniLinkedList<E> extends MiniCollection<E> {
     }
 
     public int indexOf(Object o){
-        return 1;
+        Node ptr = head;
+        int count = 0
+        while (ptr != o) {
+            ptr = ptr.next;
+            count++;
+        }
+        return count;
     }
 
     public boolean containts(Object o){
+        Node ptr = head;
+        while (ptr.next != null) {
+            if (ptr == o) {
+                return true;
+            }
+            ptr = ptr.next;
+        }
         return false;
     }
 
