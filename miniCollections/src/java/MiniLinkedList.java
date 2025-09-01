@@ -114,7 +114,7 @@ public class MiniLinkedList<E> extends MiniCollection<E> {
 
     public int indexOf(Object o){
         Node ptr = head;
-        int count = 0
+        int count = 0;
         while (ptr != o) {
             ptr = ptr.next;
             count++;
