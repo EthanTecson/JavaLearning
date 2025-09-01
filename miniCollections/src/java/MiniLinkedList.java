@@ -48,10 +48,12 @@ public class MiniLinkedList<E> extends MiniCollection<E> {
     public E get(int index){
         if (index < 0) {
             System.out.println("Index must be great than zero");
+            return null;
         }
 
         if (index >= size) {
             System.out.println("Index out of range");
+            return null;
         }
 
         int count = 0;
@@ -62,15 +64,52 @@ public class MiniLinkedList<E> extends MiniCollection<E> {
         return ptr.data;
     }
 
-    public E set(int index, E e){
-        Node result = null;
-        result.data = e;
-        return result.data;
+    public void set(int index, E e){
+        if (index < 0) {
+            System.out.println("Index must be great than zero");
+            return;
+        }
+
+        if (index >= size) {
+            System.out.println("Index out of range");
+            return;
+        }
+
+        int count = 0;
+        Node ptr = head;
+        while (count != index) {
+            ptr = ptr.next;
+        }
+        ptr.data = e;
+
+        System.out.println("Node at Index " + index + "set to " + e);
     }
 
-    public E remove(int index){
-        Node result = null;
-        return result.data;
+    public void remove(int index){
+        if (index < 0) {
+            System.out.println("Index must be great than zero");
+            return;
+        }
+
+        if (index >= size) {
+            System.out.println("Index out of range");
+            return;
+        }
+
+        if (index == 0) {
+            head = head.next;
+            return;
+        }
+
+        int count = 0;
+        Node prevPtr = null;
+        Node mainPtr = head;
+        while (count != index) {
+            prevPtr = mainPtr;
+            mainPtr = mainPtr.next;
+        }
+        prevPtr.next = mainPtr.next;
+        return;
     }
 
     public int indexOf(Object o){
