@@ -136,14 +136,28 @@ public class MiniLinkedList<E> extends MiniCollection<E> {
 
     // miniCollection Implementation
     protected int size(){
-        return 0;
+        if (head == null) {
+            return 0;
+        }
+        int count = 1;
+        Node ptr = head;
+        while (ptr.next != null) {
+            ptr = ptr.next;
+            count += 1;
+        }
+
+        return count; 
     }
 
     protected boolean isEmpty(){
+        if (head == null){
+            return true;
+        }
         return false;
     }
 
     protected void clear(){
+        head = null;
         return;
     }
 
