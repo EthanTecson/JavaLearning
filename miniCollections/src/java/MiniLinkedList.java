@@ -5,6 +5,7 @@ import java.util.NoSuchElementException;
 public class MiniLinkedList<E> extends MiniCollection<E> {
 
     private Node HEAD;
+    private Node TAIL;
     private int SIZE;
 
     private class Node {
@@ -17,6 +18,8 @@ public class MiniLinkedList<E> extends MiniCollection<E> {
     public void add(E e){
         Node newNode = new Node(e);
         newNode.data = e;
+        TAIL.next = newNode;
+        TAIL = newNode;
         SIZE++;
     }
 
@@ -154,6 +157,7 @@ public class MiniLinkedList<E> extends MiniCollection<E> {
 
     protected void clear(){
         HEAD = null;
+        TAIL = null;
         return;
     }
 
