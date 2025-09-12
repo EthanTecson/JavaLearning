@@ -4,9 +4,9 @@ import java.util.NoSuchElementException;
 
 public class MiniLinkedList<E> extends MiniCollection<E> {
 
-    private Node head;
-    private Node tail;
-    private int size;
+    private Node HEAD;
+    private Node TAIL;
+    private int SIZE;
 
     private class Node {
         E data;
@@ -18,8 +18,9 @@ public class MiniLinkedList<E> extends MiniCollection<E> {
     public void add(E e){
         Node newNode = new Node(e);
         newNode.data = e;
-        tail.next = newNode;
-        tail = newNode;
+        TAIL.next = newNode;
+        TAIL = newNode;
+        SIZE++;
     }
 
     // Append at specific index
@@ -28,13 +29,13 @@ public class MiniLinkedList<E> extends MiniCollection<E> {
         newNode.data = e;
 
         if (index == 0) {
-            newNode.next = head;
-            head = newNode;
+            newNode.next = HEAD;
+            HEAD = newNode;
             return;
         }
 
         int count = 0;
-        Node mainPtr = head;
+        Node mainPtr = HEAD;
         Node prevPtr = null;
         while (count != index) {
             prevPtr = mainPtr;
@@ -43,6 +44,7 @@ public class MiniLinkedList<E> extends MiniCollection<E> {
         }
         newNode.next = mainPtr;
         prevPtr.next = newNode;
+        SIZE++;
         return;
     }
 
@@ -53,13 +55,13 @@ public class MiniLinkedList<E> extends MiniCollection<E> {
             return null;
         }
 
-        if (index >= size) {
+        if (index >= SIZE) {
             System.out.println("Index out of range");
             return null;
         }
 
         int count = 0;
-        Node ptr = head;
+        Node ptr = HEAD;
         while (count != index) {
             ptr = ptr.next;
         }
@@ -72,13 +74,13 @@ public class MiniLinkedList<E> extends MiniCollection<E> {
             return;
         }
 
-        if (index >= size) {
+        if (index >= SIZE) {
             System.out.println("Index out of range");
             return;
         }
 
         int count = 0;
-        Node ptr = head;
+        Node ptr = HEAD;
         while (count != index) {
             ptr = ptr.next;
         }
@@ -93,29 +95,30 @@ public class MiniLinkedList<E> extends MiniCollection<E> {
             return;
         }
 
-        if (index >= size) {
+        if (index >= SIZE) {
             System.out.println("Index out of range");
             return;
         }
 
         if (index == 0) {
-            head = head.next;
+            HEAD = HEAD.next;
             return;
         }
 
         int count = 0;
         Node prevPtr = null;
-        Node mainPtr = head;
+        Node mainPtr = HEAD;
         while (count != index) {
             prevPtr = mainPtr;
             mainPtr = mainPtr.next;
         }
         prevPtr.next = mainPtr.next;
+        SIZE--;
         return;
     }
 
     public int indexOf(Object o){
-        Node ptr = head;
+        Node ptr = HEAD;
         int count = 0;
         while (ptr != o) {
             ptr = ptr.next;
@@ -125,7 +128,7 @@ public class MiniLinkedList<E> extends MiniCollection<E> {
     }
 
     public boolean containts(Object o){
-        Node ptr = head;
+        Node ptr = HEAD;
         while (ptr.next != null) {
             if (ptr == o) {
                 return true;
@@ -138,33 +141,27 @@ public class MiniLinkedList<E> extends MiniCollection<E> {
 
     // miniCollection Implementation
     protected int size(){
-        if (head == null) {
+        if (HEAD == null) {
             return 0;
         }
-        int count = 1;
-        Node ptr = head;
-        while (ptr.next != null) {
-            ptr = ptr.next;
-            count += 1;
-        }
 
-        return count; 
+        return SIZE; 
     }
 
     protected boolean isEmpty(){
-        if (head == null){
+        if (HEAD == null){
             return true;
         }
         return false;
     }
 
     protected void clear(){
-        head = null;
+        HEAD = null;
         return;
     }
 
     private class LinkedListIterator implements MiniIterator<E>{
-        private Node current = head;
+        private Node current = HEAD;
 
         public boolean hasNext() {
             return current != null;
