@@ -1,5 +1,7 @@
 package miniCollections.src.java;
 
+import java.util.NoSuchElementException;
+
 public class MiniLinkedList<E> extends MiniCollection<E> {
 
     private Node head;
@@ -162,13 +164,19 @@ public class MiniLinkedList<E> extends MiniCollection<E> {
     }
 
     private class LinkedListIterator implements MiniIterator<E>{
+        private Node current = head;
+
         public boolean hasNext() {
-            return false;
+            return current != null;
         }
 
         public E next() {
-            Node result = null;
-            return result.data;
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            E data = current.data;
+            current = current.next;
+            return data;
         }
     }
 
